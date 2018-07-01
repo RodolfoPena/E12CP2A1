@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%k = 0%>
+    <% @products.each do |product| %>
+    <%k = k + 1%>
+    <tr>
+      <th scope="row"><%= k %></th>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td>
+        <%= link_to 'Show', product, class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-secondary'  %>
+        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning'  %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
